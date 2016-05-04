@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My variant</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="description" content="Get my variant in the Ip namespace">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <style media="screen">
+  .row{
+    margin-top: 10px;
+  }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <fieldset class="form-horizontal">
+          <legend class="text-center">F***** teachers with strange variant distribution</legend>
+
+          <div class="form-group">
+            <label for="start_count" class="col-sm-2 control-label">My :</label>
+            <div class="col-sm-4">
+              <input id="my_id" type="text"  class="form-control" placeholder="Start count" value="4309">
+            </div>
+            <div class="col-sm-6">
+              <div class="checkbox">
+                <label>
+                  <input id="check_all" type="checkbox"> Show all students
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mod_count" class="col-sm-3 col-md-2 control-label">% of :</label>
+            <div class="col-sm-3 col-md-4">
+              <input id="mod_count" type="text" class="form-control" placeholder="Mod of" value="4321">
+            </div>
+            <label for="add_count" class="col-sm-3 col-md-2 control-label">Add :</label>
+            <div class="col-sm-3 col-md-4">
+              <input id="add_count" type="text" class="form-control" placeholder="Add any value" value="0">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success btn-block" onclick="conutVar()">Submit</button>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <table  class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Hm The names</th>
+              <th>Number of your ZaliCaffka</th>
+              <th>Variant</th>
+            </tr>
+          </thead>
+          <tbody id="res">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript">
+
+  const students ={
+    '4101':'Альошин Ігор Михайлович',
+    '4102':'Баранівський Володимир Вікторович',
+    '4103':'Баранов Ярослав Миколайович',
+    '4104':'Борков Єгор Альбертович',
+    '4105':'Бражнік Владислав Валерійович',
+    '4107':'Вінтерле Віталій Сергійович',
+    '4108':'Зубрицький Андрій Юрійович',
+    '4109':'Іванова Лідія Андріївна',
+    '4110':'Івашків Катерина Петрівна',
+    '4111':'Канівець Дмитро Володимирович',
+    '4112':'Кліщ Олег Володимирович',
+    '4113':'Кокшайкина Марія Миколаївна',
+    '4114':'Корпан Олег Олександрович',
+    '4116':'Мірошник Олексій Сергійович',
+    '4117':'Нечай Дмитро Олександрович',
+    '4119':'Охотнік Тетяна Олександрівна',
+    '4120':'Ошийко Ярослав Романович',
+    '4121':'Парамонов Назар Валерійович',
+    '4122':'Педос Василь Миколайович',
+    '4123':'Піддячий Олексій Олегович',
+    '4124':'Реньгач Андрій Сергійович',
+    '4125':'Романовський Юрій Олександрович',
+    '4126':'Русських Єлизавета Миколаївна',
+    '4127':'Савченко Валерія Віталіївна',
+    '4128':'Салій Ольга Олексіївна',
+    '4129':'Черната Андрій Сергійович',
+
+    '4201':'Бернатович Анатолій Олександрович',
+    '4202':'Білочуб Микола Михайлович',
+    '4203':'Водотієць Денис Ігорович',
+    '4204':'Герасименко Ігор Анатолійович',
+    '4205':'Дем\'яненко Вячеслав Олексійович',
+    '4206':'Дзюба Влад Володимирович',
+    '4207':'Егреші Іван Іванович',
+    '4208':'Зіневич Веніамін Веніамінович',
+    '4209':'Ілюшик Сергій Олександрович',
+    '4210':'Карась Віта Ігорівна',
+    '4211':'Кафтанатій Богдан Сергійович',
+    '4212':'Киричек Микита Ігорович',
+    '4213':'Козлюк Марія Олександрівна',
+    '4214':'Крат Юрій Юрійович',
+    '4215':'Лістунова Аліна Віталіївна',
+    '4216':'Маклаков Аркадій Аркадійович',
+    '4218':'Орленко Олексій Андрійович',
+    '4219':'Романчук Богдан Вікторович',
+    '4221':'Самоненко Анна Валентинівна',
+    '4222':'Сич Юрій Вікторович',
+    '4223':'Стеценко Владислав Олегович',
+    '4224':'Усик Роман Володимирович',
+    '4225':'Фінчук Олександр Васильович',
+    '4226':'Фоменко Володимир Андрійович',
+    '4227':'Черненький Артем Юрійович',
+    '4230':'Ящук Петро Вікторович',
+
+    '4303':'Демидов Михайло Олександрович',
+    '4305':'Дмитрик Сергій Станіславович',
+    '4307':'Дмитрюк Олег Володимирович',
+    '4308':'Духін Владислав Олексійович',
+    '4309':'Каменський Євгеній Анатолієвич',
+    '4310':'Кобринчук Руслан Миколайович',
+    '4311':'Курильченко Кирило Олегович',
+    '4312':'Мазур Вадим Сергійович',
+    '4313':'Машковський Антон Аркадійович',
+    '4316':'Нановський Сергій Анатолійович',
+    '4317':'Ніщенко Юрій Юрійович',
+    '4320':'Семеренко Андрій В\'ячеславович',
+    '4321':'Сілкін Микита Генадійович',
+    '4322':'Степанюк Євгеній Юрійович',
+    '4323':'Щербаков Дмитро Сергійович',
+    '4324':'Храпов Олег Олегович',
+    '4325':'Шабанов Дмитро Євгенович',
+    '4326':'Шуригіна Юлія Леонідівна',
+    '4410':'Козел Олена Олександрівна',
+    '4411':'Крикун Євгеній Вікторович',
+
+    '4401':'Безгубенко Богдан Андрійович',
+    '4402':'Божко Олексій Ігорович',
+    '4403':'Бормотов Максим Сергійович',
+    '4404':'Валовий Мирослав Вікторович',
+    '4405':'Висоцький Андрій Сергійович',
+    '4406':'Дьомишев Олександр Русланович',
+    '4409':'Касим Олена Юріївна ',
+    '4412':'Майоров Ігор Миколайович',
+    '4414':'Пономаренко Ілля Русланович',
+    '4416':'Проценко Пилип Олександрович',
+    '4417':'Путілін Денис Юрійович',
+    '4423':'Хауха Олександр Олександрович',
+    '4407':'Хоботін Максим Вікторович'
+  };
+
+  function conutVar() {
+    let root = document.getElementById('res');
+    root.innerHTML="";
+
+    let mod_count = parseInt(document.getElementById('mod_count').value);
+    let add_count = parseInt(document.getElementById('add_count').value);
+    let my_id = parseInt(document.getElementById('my_id').value);
+    let check_all = document.getElementById('check_all').checked;
+
+    let myVar = (my_id % mod_count ) + add_count;
+
+    for (var k in students){
+      if (students.hasOwnProperty(k)) {
+        let tmp = (k % mod_count ) + add_count;
+        if (check_all || tmp == myVar) {
+          root.innerHTML+='<tr><td>' + students[k] +'</td><td>' + k  +'</td><td>' + tmp + '</td></tr>';
+        }
+
+      }
+    }
+
+  }
+  </script>
+</body>
+</html>
