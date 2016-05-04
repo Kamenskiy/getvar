@@ -171,14 +171,30 @@ footer{
     '4407':{'name':'Хоботін Максим Вікторович'}
   };
 
+  window.onload = function(){
+  document.getElementById('mod_count').value = localStorage.getItem("mod_count");
+  document.getElementById('add_count').value = localStorage.getItem("add_count");
+  document.getElementById('my_id').value =  localStorage.getItem("my_id");
+  document.getElementById('check_all').value =  localStorage.getItem("check_all");
+   }
+
   function conutVar() {
     let root = document.getElementById('res');
     root.innerHTML="";
 
-    let mod_count = parseInt(document.getElementById('mod_count').value);
-    let add_count = parseInt(document.getElementById('add_count').value);
-    let my_id = parseInt(document.getElementById('my_id').value);
+    let mod_count = document.getElementById('mod_count').value;
+    let add_count = document.getElementById('add_count').value;
+    let my_id = document.getElementById('my_id').value;
     let check_all = document.getElementById('check_all').checked;
+
+    mod_count = (!mod_count || typeof mod_count == 'undefined')?0:parseInt(mod_count);
+    add_count = (!add_count|| typeof add_count== 'undefined')?0:parseInt(add_count);
+    my_id = (!my_id || typeof my_id== 'undefined')?0:parseInt(my_id);
+
+    localStorage.setItem("mod_count", mod_count);
+    localStorage.setItem("add_count", add_count);
+    localStorage.setItem("my_id", my_id);
+    localStorage.setItem("check_all", check_all);
 
     let myVar = (my_id % mod_count ) + add_count;
 
