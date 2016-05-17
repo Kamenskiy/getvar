@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
   <style media="screen">
   .row{
     margin-top: 10px;
@@ -17,11 +18,11 @@
   }
   body{
     background-color: #f5f5f5;
+
   }
   main{
     background-color: white;
   }
-
   h2{
     margin-bottom: 15pt;
   }
@@ -42,8 +43,8 @@
   }
   .btn-blue:focus,
   .btn-blue.focus {
-    color: #fff;
-    background-color: #44BDB5;
+    color: #44BDB5;
+    background-color: white;
 
   }
   .btn-blue:hover {
@@ -57,15 +58,15 @@
     background-color: white;
     border-color: #44BDB5;
   }
-
   </style>
 </head>
 <body>
-  <header class="container-fluid text-center">
+  <header class="container-fluid">
     <div class="row">
       <h2 class="text-center">F***** teachers with strange variant distribution</h2>
     </div>
   </header>
+  
   <main class="container">
     <div class="row form-horizontal">
       <div class="col-sm-12 col-md-8 col-md-offset-2">
@@ -82,7 +83,6 @@
             </div>
           </div>
         </div>
-
         <div class="form-group">
           <label for="mod_count" class="col-sm-2 control-label">% of :</label>
           <div class="col-sm-4">
@@ -100,6 +100,7 @@
         </div>
       </div>
     </div>
+    
     <div class="row">
       <table  class="table table-striped">
         <thead>
@@ -114,11 +115,12 @@
       </table>
     </div>
   </main>
+  
   <footer class="container text-center">
     <a href="https://vk.com/palivtzo">Our group</a>
   </footer>
+  
   <script type="text/javascript">
-
   const students ={
     '4101':{'name':'Альошин Ігор Михайлович'},
     '4102':{'name':'Баранівський Володимир Вікторович'},
@@ -243,9 +245,9 @@
         if (check_all || tmp == myVar) {
           root.innerHTML+='<tr><td>' + students[k]['name'] +'</td><td>' + k  +'</td><td>' + tmp + '</td></tr>';
         }
-
       }
     }
+    
   }
   </script>
 </body>
