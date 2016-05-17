@@ -4,79 +4,118 @@
   <title>My variant</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="description" content="Get my variant in the Ip namespace">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <style media="screen">
   .row{
     margin-top: 10px;
   }
-  main {
-    -webkit-box-shadow: -1px -2px 16px -5px rgba(0,0,0,0.75);
--moz-box-shadow: -1px -2px 16px -5px rgba(0,0,0,0.75);
-box-shadow: -1px -2px 16px -5px rgba(0,0,0,0.75);
-}
-footer{
-  padding: : 5pt;
-  height: 2em;
-}
+  header,footer{
+    background-color: #44BDB5;
+    color: #C6EEEB;
+  }
+  body{
+    background-color: #f5f5f5;
+  }
+  main{
+    background-color: white;
+  }
+
+  h2{
+    margin-bottom: 15pt;
+  }
+  footer{
+    padding: 10pt;
+  }
+  footer a{
+  color: white;
+  font-weight: bold;
+  }
+
+  .btn-blue {
+    font-weight: bold;
+    color: #44BDB5;
+    background-color: white;
+    border-color: #44BDB5;
+    border-radius: 0px;
+  }
+  .btn-blue:focus,
+  .btn-blue.focus {
+    color: #fff;
+    background-color: #44BDB5;
+
+  }
+  .btn-blue:hover {
+    color: white;
+    background-color: #44BDB5;
+  }
+  .btn-blue:active,
+  .btn-blue.active,
+  .open > .dropdown-toggle.btn-blue {
+    color: #44BDB5;
+    background-color: white;
+    border-color: #44BDB5;
+  }
+
   </style>
 </head>
 <body>
-  <header class="container text-center"></header>
-  <main class="container">
+  <header class="container-fluid text-center">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <fieldset class="form-horizontal">
-          <legend class="text-center">F***** teachers with strange variant distribution</legend>
-
-          <div class="form-group">
-            <label for="start_count" class="col-sm-2 control-label">My :</label>
-            <div class="col-sm-4">
-              <input id="my_id" type="text"  class="form-control" placeholder="Start count" value="4309">
-            </div>
-            <div class="col-sm-6">
-              <div class="checkbox">
-                <label>
-                  <input id="check_all" type="checkbox"> Show all students
-                </label>
-              </div>
+      <h2 class="text-center">F***** teachers with strange variant distribution</h2>
+    </div>
+  </header>
+  <main class="container">
+    <div class="row form-horizontal">
+      <div class="col-sm-12 col-md-8 col-md-offset-2">
+        <div class="form-group">
+          <label for="start_count" class="col-sm-2 control-label">My :</label>
+          <div class="col-sm-4">
+            <input id="my_id" type="text"  class="form-control" placeholder="gradebook">
+          </div>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <input id="check_all" type="checkbox"> Show all students
+              </label>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="mod_count" class="col-sm-3 col-md-2 control-label">% of :</label>
-            <div class="col-sm-3 col-md-4">
-              <input id="mod_count" type="text" class="form-control" placeholder="Mod of" value="1">
-            </div>
-            <label for="add_count" class="col-sm-3 col-md-2 control-label">Add :</label>
-            <div class="col-sm-3 col-md-4">
-              <input id="add_count" type="text" class="form-control" placeholder="Add any value" value="0">
-            </div>
+        <div class="form-group">
+          <label for="mod_count" class="col-sm-2 control-label">% of :</label>
+          <div class="col-sm-4">
+            <input id="mod_count" type="text" class="form-control" placeholder="Mod of" value="1">
           </div>
-          <button type="submit" class="btn btn-success btn-block" onclick="conutVar()">Submit</button>
-        </fieldset>
+          <label for="add_count" class="col-sm-2 control-label">Add :</label>
+          <div class="col-sm-4">
+            <input id="add_count" type="text" class="form-control" placeholder="Add any value" value="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
+            <button type="submit" class="btn btn-blue btn-block" onclick="conutVar()">Submit</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-        <table  class="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>Hm The names</th>
-              <th>Number of your ZaliCaffka</th>
-              <th>Variant</th>
-            </tr>
-          </thead>
-          <tbody id="res">
-
-          </tbody>
-        </table>
-      </div>
+      <table  class="table table-striped">
+        <thead>
+          <tr>
+            <th>Students</th>
+            <th>Number of your ZaliCaffka</th>
+            <th>Variant</th>
+          </tr>
+        </thead>
+        <tbody id="res">
+        </tbody>
+      </table>
     </div>
   </main>
   <footer class="container text-center">
-<a href="https://vk.com/palivtzo">Our group</a>
+    <a href="https://vk.com/palivtzo">Our group</a>
   </footer>
   <script type="text/javascript">
 
@@ -172,11 +211,11 @@ footer{
   };
 
   window.onload = function(){
-  document.getElementById('mod_count').value = localStorage.getItem("mod_count");
-  document.getElementById('add_count').value = localStorage.getItem("add_count");
-  document.getElementById('my_id').value =  localStorage.getItem("my_id");
-  document.getElementById('check_all').value =  localStorage.getItem("check_all");
-   }
+    document.getElementById('mod_count').value = localStorage.getItem("mod_count");
+    document.getElementById('add_count').value = localStorage.getItem("add_count");
+    document.getElementById('my_id').value =  localStorage.getItem("my_id");
+    document.getElementById('check_all').value =  localStorage.getItem("check_all");
+  }
 
   function conutVar() {
     let root = document.getElementById('res');
