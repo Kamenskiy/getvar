@@ -179,8 +179,7 @@
             }
 
             function getRandomStudents(count) {
-              var students_copy = [];
-              students_copy = students;
+              var students_copy = students.concat([]);
               students_copy.sort(compareRandom);
               return students_copy.slice(0,count - 1);
             }
