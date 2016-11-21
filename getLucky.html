@@ -131,6 +131,8 @@
             ];
 
             var lucks = [];
+            var lucksRandom = [];
+            var studentsLessRandom = [];
 
             var lucks_list = document.getElementById('lucks_list');
             var root = document.getElementById('res');
@@ -144,6 +146,7 @@
                 for (let luck of lucks_list.childNodes) {
                     lucks.push(luck.value);
                 }
+                lucksRandom = lucks.concat([]);
             }
 
             function removeFromLucks() {
@@ -179,30 +182,32 @@
             }
 
             function getRandomStudents(count) {
-              var students_copy = students.concat([]);
-              students_copy.sort(compareRandom);
-              return students_copy.slice(0,count - 1);
+                if (count > 0) {
+                    var students_copy = students.concat([]);
+                    students_copy.sort(compareRandom);
+                    return students_copy.slice(0, count);
+                }
+                return [];
             }
 
             function drawResult() {
                 root.innerHTML = "";
                 for (var k in students) {
                     if (students.hasOwnProperty(k)) {
-                        root.innerHTML += '<tr><td>' + (parseInt(k) + 1) + ' ' + students[k] + '</td><td>' + lucks[k] + '</td></tr>';
+                        root.innerHTML += '<tr><td>' + (parseInt(k) + 1) + ' ' + students[k] + '</td><td>' + lucksRandom[k] + '</td></tr>';
                     }
                 }
-                  root.innerHTML +='<tr><td></td><td></td></tr>';
-                var randstudnt = getRandomStudents(lucks.length -  students.length);
-                for (var z in randstudnt) {
-                    if (students.hasOwnProperty(z)) {
-                        let ix = parseInt(z) + 2 + parseInt(k);
-                        root.innerHTML += '<tr><td>' + ix + ' ' + students[z] + '</td><td>' + lucks[ix] + '</td></tr>';
-                    }
+                root.innerHTML += '<tr><td></td><td></td></tr>';
+                for (var z in studentsLessRandom) {
+                    let ix = parseInt(z) + 1 + parseInt(k);
+                    root.innerHTML += '<tr><td>' + (ix + 1) + ' ' + studentsLessRandom[z] + '</td><td>' + lucksRandom[ix] + '</td></tr>';
                 }
             }
 
             window.onload = function() {
                 lucks = localStorage.getItem("lucks").split(',');
+                lucksRandom = localStorage.getItem("lucksRandom").split(',');
+                studentsLessRandom = localStorage.getItem("studentsLessRandom").split(',');
                 drawLucks();
                 drawResult();
             }
@@ -210,9 +215,12 @@
             function random() {
                 removeFromLucks();
                 loadLucks();
-                lucks.sort(compareRandom);
-                localStorage.setItem("lucks", lucks);
+                lucksRandom.sort(compareRandom);
+                studentsLessRandom = getRandomStudents(lucks.length - students.length);
                 drawResult();
+                localStorage.setItem("lucks", lucks);
+                localStorage.setItem("lucksRandom", lucksRandom);
+                localStorage.setItem("studentsLessRandom", studentsLessRandom);
             }
         </script>
     </body>
