@@ -146,6 +146,10 @@
                 for (let luck of lucks_list.childNodes) {
                     lucks.push(luck.value);
                 }
+                let dif = students.length - lucks.length;
+                for (var i = 0; i < dif; i++) {
+                  lucks.push('');
+                }
                 lucksRandom = lucks.concat([]);
             }
 
