@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My variant</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="description" content="Get my variant in the Ip namespace">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <style media="screen">
+            .row {
+                margin-top: 10px;
+            }
+            footer,
+            header {
+                background-color: #44BDB5;
+                color: #C6EEEB;
+            }
+            body {
+                background-color: #f5f5f5;
+
+            }
+            main {
+                background-color: white;
+            }
+            h2 {
+                margin-bottom: 15pt;
+            }
+            footer {
+                padding: 10pt;
+            }
+            footer a {
+                color: white;
+                font-weight: bold;
+            }
+
+            .btn-blue {
+                font-weight: bold;
+                color: #44BDB5;
+                background-color: white;
+                border-color: #44BDB5;
+                border-radius: 0;
+            }
+            .btn-blue.focus,
+            .btn-blue:focus {
+                color: #44BDB5;
+                background-color: white;
+
+            }
+            .btn-blue:hover {
+                color: white;
+                background-color: #44BDB5;
+            }
+            .btn-blue.active,
+            .btn-blue:active,
+            .open > .dropdown-toggle.btn-blue {
+                color: #44BDB5;
+                background-color: white;
+                border-color: #44BDB5;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header class="container-fluid">
+            <div class="row">
+                <h2 class="text-center">Where is my luck ?</h2>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="row form-horizontal">
+                <div class="col-sm-12 col-md-8 col-md-offset-2">
+                    <h3>Hits</h3>
+                    <div class="form-group" id="lucks_list"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <button type="submit" class="btn btn-blue btn-block" onclick="addToLucks('')">Add</button>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button type="submit" class="btn btn-blue btn-block" onclick="removeFromLucks()">Remove empty</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4">
+                            <button type="submit" class="btn btn-blue btn-block" onclick="random()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Luckies</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res"></tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer class="container text-center">
+            <a href="https://vk.com/palivtzo">Our group</a>
+        </footer>
+
+        <script type="text/javascript">
+            const students = [
+                'Демидов Михайло Олександрович',
+                'Дмитрик Сергій Станіславович',
+                'Дмитрюк Олег Володимирович',
+                'Духін Владислав Олексійович',
+                'Каменський Євгеній Анатолієвич',
+                'Козел Олена Олександрівна',
+                'Курильченко Кирило Олегович',
+                'Крикун Євгеній Вікторович',
+                'Мазур Вадим Сергійович',
+                'Машковський Антон Аркадійович',
+                'Нановський Сергій Анатолійович',
+                'Ніщенко Юрій Юрійович',
+                'Семеренко Андрій В\'ячеславович',
+                'Сілкін Микита Генадійович',
+                'Степанюк Євгеній Юрійович',
+                'Щербаков Дмитро Сергійович',
+                'Храпов Олег Олегович',
+                'Шабанов Дмитро Євгенович',
+                'Шуригіна Юлія Леонідівна'
+            ];
+
+            var lucks = [];
+
+            var lucks_list = document.getElementById('lucks_list');
+            var root = document.getElementById('res');
+
+            function compareRandom(a, b) {
+                return Math.random() - 0.5;
+            }
+
+            function loadLucks() {
+                lucks = [];
+                for (let luck of lucks_list.childNodes) {
+                    lucks.push(luck.value);
+                }
+            }
+
+            function removeFromLucks() {
+                var haveToRemove = [];
+                for (let byeLuck of lucks_list.childNodes) {
+                    if (byeLuck.value == '') {
+                        haveToRemove.push(byeLuck);
+                    }
+                }
+                for (let byeLuck of haveToRemove) {
+                    lucks_list.removeChild(byeLuck);
+                }
+            }
+
+            function textBlock(value) {
+                let txtblck = document.createElement('input');
+                txtblck.setAttribute('type', "text");
+                txtblck.setAttribute('class', "form-control");
+                txtblck.setAttribute('placeholder', "Your next value");
+                txtblck.setAttribute('value', value);
+                return txtblck;
+            }
+
+            function addToLucks(value) {
+                lucks_list.appendChild(textBlock(value));
+            }
+
+            function drawLucks() {
+                lucks_list.innerHTML = "";
+                for (let luck of lucks) {
+                    addToLucks(luck);
+                }
+            }
+
+            function getRandomStudents(count) {
+              var students_copy = [];
+              students_copy = students;
+              students_copy.sort(compareRandom);
+              return students_copy.slice(0,count - 1);
+            }
+
+            function drawResult() {
+                root.innerHTML = "";
+                for (var k in students) {
+                    if (students.hasOwnProperty(k)) {
+                        root.innerHTML += '<tr><td>' + (parseInt(k) + 1) + ' ' + students[k] + '</td><td>' + lucks[k] + '</td></tr>';
+                    }
+                }
+                  root.innerHTML +='<tr><td></td><td></td></tr>';
+                var randstudnt = getRandomStudents(lucks.length -  students.length);
+                for (var z in randstudnt) {
+                    if (students.hasOwnProperty(z)) {
+                        let ix = parseInt(z) + 2 + parseInt(k);
+                        root.innerHTML += '<tr><td>' + ix + ' ' + students[z] + '</td><td>' + lucks[ix] + '</td></tr>';
+                    }
+                }
+            }
+
+            window.onload = function() {
+                lucks = localStorage.getItem("lucks").split(',');
+                drawLucks();
+                drawResult();
+            }
+
+            function random() {
+                removeFromLucks();
+                loadLucks();
+                lucks.sort(compareRandom);
+                localStorage.setItem("lucks", lucks);
+                drawResult();
+            }
+        </script>
+    </body>
+</html>
